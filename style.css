@@ -1,0 +1,210 @@
+/* === ملف CSS الكامل - يجب أن يكون مطابقًا للنسخة السابقة التي وافقت عليها === */
+
+/* --- 1. إعدادات أساسية وإعادة تعيين --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: 'Cairo', sans-serif; */ /* Uncomment to use Cairo font */
+    background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%); /* Keep the gradient */
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    direction: rtl;
+}
+
+/* --- 2. الحاوية الرئيسية --- */
+.container {
+    background-color: rgba(0, 0, 0, 0.2); /* Keep transparency */
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 650px;
+}
+
+/* --- 3. العنوان --- */
+h1 { text-align: center; margin-bottom: 30px; color: #fff; font-weight: 700; font-size: 2rem; }
+h1 i { margin-left: 10px; vertical-align: middle; }
+
+/* --- 4. نموذج إضافة المهمة --- */
+#add-task-form { display: flex; flex-wrap: wrap; margin-bottom: 30px; gap: 10px; align-items: center; }
+#task-input-field { flex: 1 1 300px; padding: 12px 18px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; background-color: rgba(255, 255, 255, 0.1); color: #fff; font-size: 1rem; outline: none; transition: background-color 0.3s ease, border-color 0.3s ease; }
+#task-input-field::placeholder { color: rgba(255, 255, 255, 0.6); }
+#task-input-field:focus { background-color: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.5); }
+#add-task-status { padding: 12px 10px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; background-color: rgba(255, 255, 255, 0.1); color: #fff; font-size: 0.9rem; outline: none; cursor: pointer; flex: 0 1 150px; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: left 10px center; background-size: .6em; padding-left: 30px; transition: background-color 0.3s ease, border-color 0.3s ease; }
+#add-task-status:focus { background-color: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.5); }
+#add-task-status option { background-color: #333; color: #fff; }
+#add-task-form button { padding: 12px 22px; background-color: #fc5c7d; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: background-color 0.3s ease, transform 0.1s ease; display: flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0; }
+#add-task-form button:hover { background-color: #e04a67; }
+#add-task-form button:active { transform: scale(0.98); }
+/* Add style for optional description textarea in add form if needed */
+/*
+#add-task-description { width: 100%; flex-basis: 100%; margin-top: 10px; padding: 10px 12px; ... similar styles to task-input-field ... }
+*/
+
+
+/* --- 4. نموذج إضافة المهمة (تعديل وإضافة) --- */
+#add-task-form {
+    /* ... الأنماط الحالية (display: flex; flex-wrap: wrap; ...) ... */
+}
+#task-input-field {
+    /* ... الأنماط الحالية ... */
+}
+
+/* <<< أنماط حقل الوصف الجديد في نموذج الإضافة >>> */
+#add-task-description {
+    /* جعله يأخذ كامل العرض في السطر الخاص به */
+    flex-basis: 100%; /* يأخذ كامل عرض الحاوية flex */
+    width: 100%;      /* ضمان العرض الكامل */
+    margin-top: 10px; /* مسافة علوية لفصله */
+    min-height: 60px; /* ارتفاع أدنى */
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    resize: vertical; /* السماح بتغيير الحجم عمودياً */
+    font-family: inherit; /* استخدام نفس خط الصفحة */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+#add-task-description::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+#add-task-description:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+/* <<< نهاية أنماط حقل الوصف الجديد >>> */
+
+#add-task-status {
+    /* ... الأنماط الحالية (مع flex: 0 1 150px;) ... */
+    margin-top: 10px; /* إضافة هامش علوي ليتناسب مع ترتيب textarea */
+}
+#add-task-form button {
+    /* ... الأنماط الحالية (مع flex-shrink: 0;) ... */
+    margin-top: 10px; /* إضافة هامش علوي ليتناسب مع ترتيب textarea */
+}
+
+/* --- 9. تصميم متجاوب (تعديل نقاط التوقف للنموذج) --- */
+@media (max-width: 768px) {
+     /* ... باقي التعديلات ... */
+     #task-input-field { flex-basis: 100%; } /* جعل حقل العنوان يأخذ كامل العرض */
+     #add-task-description { margin-top: 10px; } /* الحفاظ على الهامش */
+     #add-task-status { flex-grow: 1; flex-basis: auto; margin-top: 10px;} /* جعل الحالة تأخذ المساحة المتبقية بجانب الزر */
+     #add-task-form button { margin-top: 10px; }
+}
+@media (max-width: 520px) {
+    /* Stack add form vertically (الأنماط السابقة هنا صحيحة) */
+    #add-task-form { flex-direction: column; align-items: stretch; gap: 12px; }
+    #task-input-field, #add-task-description, #add-task-status, #add-task-form button { flex-basis: auto; width: 100%; margin-top: 0; /* إزالة الهوامش العلوية عند الترتيب العمودي */ }
+    #add-task-form button { justify-content: center; }
+}
+
+
+/* --- 5. قائمة المهام --- */
+#tasks-list-container { list-style: none; padding: 0; max-height: 50vh; /* Increased height slightly */ overflow-y: auto; margin-bottom: 20px; padding-left: 5px; }
+#tasks-list-container::-webkit-scrollbar { width: 8px; }
+#tasks-list-container::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+#tasks-list-container::-webkit-scrollbar-thumb { background-color: rgba(252, 92, 125, 0.6); border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
+#tasks-list-container::-webkit-scrollbar-thumb:hover { background-color: rgba(252, 92, 125, 0.8); }
+.no-tasks-message { text-align: center; color: #aaa; padding: 25px 0; font-style: italic; /* display is controlled by JS */ }
+
+/* --- 6. عنصر المهمة الفردي --- */
+.task-item { background-color: rgba(255, 255, 255, 0.08); margin-bottom: 12px; padding: 0; /* Padding handled by inner divs */ border-radius: 10px; display: flex; /* Will be overridden */ flex-direction: column; /* Tasks now stack view/edit */ transition: background-color 0.3s ease, opacity 0.3s ease, min-height 0.3s ease; word-break: break-word; border: 1px solid transparent; position: relative; overflow: hidden; }
+.task-item:hover { background-color: rgba(255, 255, 255, 0.12); }
+
+/* View vs Edit Mode Handling */
+.task-view { display: flex; align-items: center; padding: 15px 20px; } /* View mode is flex */
+.task-edit-view { display: none; padding: 15px 20px; background-color: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.task-item.editing .task-view { display: none; }
+.task-item.editing .task-edit-view { display: block; }
+
+/* شارة الحالة وألوانها */
+.task-status-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; font-weight: bold; margin-bottom: 6px; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
+.task-item.status-todo .task-status-badge { background-color: #ffc107; color: #333; }
+.task-item.status-inprogress .task-status-badge { background-color: #0dcaf0; color: #333; }
+.task-item.status-done .task-status-badge { background-color: #198754; }
+
+/* النص والوصف */
+.task-text { font-size: 1rem; color: #fff; line-height: 1.4; }
+.task-description { font-size: 0.85em; color: #ccc; margin-top: 8px; margin-bottom: 8px; line-height: 1.5; white-space: pre-wrap; display: block; }
+.task-description:empty { display: none; } /* Hide empty description */
+
+/* حاوية التواريخ والتواريخ نفسها */
+.task-dates { margin-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+.task-date { font-size: 0.75em; color: #ccc; opacity: 0.8; }
+/* Completed date visibility controlled by JS */
+
+/* مربع الاختيار ومحتوى المهمة */
+.task-content { display: flex; align-items: center; gap: 15px; flex-grow: 1; margin-left: 15px; /* Space from actions in RTL */ overflow: hidden; }
+.complete-checkbox { appearance: none; -webkit-appearance: none; min-width: 20px; width: 20px; height: 20px; border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; position: relative; transition: background-color 0.2s ease, border-color 0.2s ease; flex-shrink: 0; }
+.complete-checkbox:checked { background-color: #6a82fb; border-color: #6a82fb; }
+.complete-checkbox:checked::after { content: '\f00c'; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 11px; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.task-details { display: flex; flex-direction: column; overflow: hidden; }
+
+/* --- 6.5 أنماط وضع التعديل --- */
+.task-edit-view input[type="text"], .task-edit-view textarea, .task-edit-view select { width: 100%; margin-bottom: 10px; padding: 10px 12px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; background-color: rgba(255, 255, 255, 0.15); color: #fff; font-size: 0.95rem; outline: none; transition: background-color 0.3s ease, border-color 0.3s ease; }
+.task-edit-view input[type="text"]:focus, .task-edit-view textarea:focus, .task-edit-view select:focus { background-color: rgba(255, 255, 255, 0.25); border-color: rgba(255, 255, 255, 0.6); }
+.task-edit-view textarea { min-height: 60px; resize: vertical; font-family: inherit; }
+.edit-controls { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 5px; }
+.edit-controls select { flex-grow: 1; margin-bottom: 0; cursor: pointer; /* Same styles as add-task-status */ padding: 10px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; background-color: rgba(255, 255, 255, 0.15); color: #fff; font-size: 0.9rem; outline: none; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: left 10px center; background-size: .6em; padding-left: 30px; }
+.edit-controls select option { background-color: #333; color: #fff; }
+.edit-controls button { padding: 8px 15px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: background-color 0.2s ease, transform 0.1s ease; display: flex; align-items: center; gap: 5px; }
+.edit-controls .save-edit-btn { background-color: #198754; color: white; }
+.edit-controls .save-edit-btn:hover { background-color: #157347; }
+.edit-controls .cancel-edit-btn { background-color: #6c757d; color: white; }
+.edit-controls .cancel-edit-btn:hover { background-color: #5c636a; }
+.edit-controls button:active { transform: scale(0.97); }
+
+/* --- 7. أزرار الإجراءات (في العرض العادي) --- */
+/* Action buttons container within the task-view */
+.task-view .task-actions { display: flex; align-items: center; flex-shrink: 0; margin-right: auto; /* Push buttons to the left in RTL */ }
+.task-actions button { background: none; border: none; color: rgba(255, 255, 255, 0.6); cursor: pointer; font-size: 1.1rem; padding: 6px 8px; margin-left: 5px; /* Space between buttons in RTL */ transition: color 0.2s ease, transform 0.2s ease; line-height: 1; }
+.task-actions button:first-child { margin-left: 0; } /* No margin on the first button (rightmost in RTL) */
+.task-actions button:hover { color: #fff; transform: scale(1.15); }
+.task-actions .edit-btn:hover { color: #f1c40f; }
+.task-actions .delete-btn:hover { color: #e74c3c; }
+
+/* --- 8. معلومات الحالة --- */
+.status-info { text-align: center; margin-top: 25px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8); opacity: 0.9; }
+.status-info span { margin: 0 5px; }
+
+/* --- 9. تصميم متجاوب --- */
+@media (max-width: 768px) {
+    .container { padding: 25px 30px; margin: 15px; }
+    h1 { font-size: 1.8rem; }
+    /* Adjust task item layout for tablet */
+    .task-view { flex-direction: column; align-items: stretch; gap: 10px; padding: 15px; }
+    .task-content { margin-left: 0; }
+    .task-view .task-actions { margin-right: 0; /* Reset margin */ width: 100%; justify-content: flex-end; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 10px; }
+    /* Edit mode controls stack vertically */
+    .edit-controls { flex-direction: column; align-items: stretch; }
+    .edit-controls select { margin-bottom: 10px; }
+    .edit-controls button { width: 100%; justify-content: center; }
+}
+@media (max-width: 520px) {
+    /* Stack add form vertically */
+    #add-task-form { flex-direction: column; align-items: stretch; gap: 12px; }
+    #task-input-field, #add-task-status, #add-task-form button { flex-basis: auto; width: 100%; }
+    #add-task-form button { justify-content: center; }
+}
+@media (max-width: 480px) {
+     body { padding: 10px; }
+     .container { padding: 20px; }
+     h1 { font-size: 1.6rem; }
+     /* Further reduce task item padding on small phones */
+     .task-view { padding: 12px 15px; }
+     .task-edit-view { padding: 12px 15px; }
+     .task-text { font-size: 0.95rem; }
+     .task-date { font-size: 0.7em; }
+     .status-info { font-size: 0.85rem; }
+  }
