@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدير المهام الشخصي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-tasks"></i> مدير المهام الشخصي</h1>
+
+        <!-- === نموذج الإضافة المعدل === -->
+        <form id="add-task-form">
+            <input type="text" id="task-input-field" placeholder="عنوان المهمة..." required autocomplete="off">
+            <textarea id="add-task-description" placeholder="وصف المهمة (اختياري)..."></textarea> <!-- <<< حقل الوصف الجديد -->
+            <select id="add-task-status" title="اختر الحالة">
+                <option value="todo" selected>لم تبدأ</option>
+                <option value="inProgress">قيد التنفيذ</option>
+                <option value="done">مكتملة</option>
+            </select>
+            <button type="submit" title="إضافة مهمة"><i class="fas fa-plus"></i> إضافة</button>
+        </form>
+        <!-- === نهاية نموذج الإضافة === -->
+
+        <ul id="tasks-list-container">
+            <p class="no-tasks-message" style="text-align: center; color: #ccc; display: none;">لا توجد مهام لعرضها.</p>
+        </ul>
+
+        <p class="status-info">
+            <span id="total-count">الإجمالي: 0</span> |
+            <span id="completed-count">المكتملة: 0</span> |
+            <span id="pending-count">المتبقية: 0</span>
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
